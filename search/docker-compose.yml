@@ -1,7 +1,7 @@
 version: '2'
 services:
   elasticsearch:
-    image: es_kibana/search:7.10.1
+    build: .
     environment:
       - node.name=master
       - discovery.type=single-node
