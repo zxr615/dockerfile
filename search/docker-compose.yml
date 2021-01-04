@@ -1,0 +1,28 @@
+version: '2'
+services:
+  elasticsearch:
+    image: es_kibana/search:7.10.1
+    environment:
+      - node.name=master
+      - discovery.type=single-node
+    networks: 
+      - elastic
+    ports: 
+      - "9200:9200"
+    volumes: 
+      - /Users/tuju/DockerMount/es7101/data:/usr/share/elasticsearch/data
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.1
+    volumes:
+      - /Users/tuju/DockerMount/kibana7101/data:/usr/share/kibana/data
+    networks: 
+      - elastic
+    ports:
+      - "5601:5601"
+    environment:
+      SERVER_NAME: master
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      I18N_LOCALE: zh-CN
+networks: 
+  elastic: 
+    driver: bridge
