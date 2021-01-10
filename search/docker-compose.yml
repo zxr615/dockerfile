@@ -10,11 +10,11 @@ services:
     ports: 
       - "9200:9200"
     volumes: 
-      - /Users/tuju/DockerMount/es7101/data:/usr/share/elasticsearch/data
+      - /home/fanwei/dockerData/es${ES_VERSION}/data:/usr/share/elasticsearch/data
   kibana:
-    image: docker.elastic.co/kibana/kibana:${KIBANA_VERSION}
+    image: docker.elastic.co/kibana/kibana:${ES_VERSION}
     volumes:
-      - /Users/tuju/DockerMount/kibana7101/data:/usr/share/kibana/data
+      - /home/fanwei/dockerData/kibana7.10.1/data:/usr/share/kibana/data
     networks: 
       - elastic
     ports:
